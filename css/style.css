@@ -1,0 +1,790 @@
+
+/*全体　共通
+最初から設定してあるので特に変更
+しなくても大丈夫です♪
+-----------------*/
+body{
+	font-family: Roboto, "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+	line-height: 1.75;
+	/* font-size: 16px; */
+	width: 960px;
+	margin: 0 auto;
+}
+
+/*　パディングをサイズ内側にする処理　*/
+* {
+	padding:0;
+	margin:0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/*ーーーーーーーーーーー*/
+/*この下から記述*/
+/*ーーーーーーーーーーー*/
+a {
+	user-select: none;
+}
+
+main {
+	margin-top: 50px;
+	position: fixed;
+	top: 0;
+  width: 100%;
+  height: 1000px;
+  opacity: 1;
+  display: none;
+	z-index: 10;
+}
+
+main.on {
+  display: inline;
+}
+
+header {
+	width: 960px;
+	height: 350px;
+	margin-top: 80px;
+	margin-bottom: 80px;
+	background-image: url("../img/mainbg.png");
+	display: flex;
+	background-size: cover;
+  justify-content: center;
+	align-items: center;
+}
+
+.header-text {
+	margin: 0;
+	color: white;
+}
+
+header h1 {
+	/* font-size: 38px; */
+	margin: 0 0 40px;
+	text-align: center;
+	opacity: 0;
+  animation-name: fadein;
+	animation-duration: 2s;
+	animation-delay: 1s;
+  animation-fill-mode: forwards;
+
+}
+
+header h2 {
+	/* font-size: 26px; */
+	text-align: center;
+	opacity: 0;
+  animation-name: fadein;
+	animation-duration: 2s;
+	animation-delay: 1s;
+  animation-fill-mode: forwards;
+
+}
+
+@keyframes fadein {
+  from {opacity: 0;}
+  to {transform: translateY(-10px); opacity: 1;}
+}
+
+.fadein {
+  opacity : 0;
+  transform : translate(0, 50px);
+  transition : all 0.8s;
+}
+ 
+.fadein.active{
+  opacity : 1;
+  transform : translate(0, 0);
+}
+
+nav {
+	position: fixed;
+	top: 0px;
+	background-color: white;
+	display: flex;
+	/* 子要素を縦方向の中央にする */
+	align-items: center;
+	justify-content:space-between;
+	border: 1px solid #efefef;
+	z-index: 1;
+	width: 960px;
+}
+
+nav img {
+	margin-left: 20px;
+	/* margin-right: 10px; */
+	float: left;
+	width: 150px;
+	height: 30px;
+}
+
+nav ul{
+	margin-right: 20px;
+	display: flex;
+	height: 70px;
+	
+	/* 子要素を縦方向の中央にする */
+	align-items: center;
+	list-style: none;
+}
+
+nav li {
+	padding: 0 10px 0;
+	font-size: 18px;
+}
+
+
+nav li>a {
+	display: inline-block;
+	width: 85px;
+	line-height: 70px;
+	text-align: center;
+	text-decoration: none;
+	color: #222222;
+	cursor: pointer;
+}
+
+nav li:hover {
+    color: #ffffff;
+    position: relative;
+}
+
+nav li:hover::before {
+ 		content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: rgba(212, 212, 208, 0.7);
+    animation: bg_slide 0.4s;  animation: bg_slide 0.4s;
+}
+
+.nav-button-active {
+		width: 100%;
+		height: 100%;
+    z-index: 0;
+		background-color: rgba(180, 183, 185, 0.5);
+    transition: 0.4s;
+}
+
+.nav-button-nonactive {
+    width: 100%;
+    z-index: 0;
+		background-color: rgba(180, 183, 185, 0);
+    transition: 0.4s;
+}
+
+.nav-button-active_font {
+	 color: #ffffff;
+}
+.nav-button-nonactive_font {
+	color: black;
+}
+
+
+
+
+
+/* リンク先の位置の微調整 */
+#ABOUT,
+#COURSE,
+#NEWS,
+#ACCESS,
+#CONTACT
+ {
+	padding-top: 70px;
+	margin-top: -70px;
+}
+
+		
+
+    #panel-btn {
+			margin-right: 20px;
+			display: none;
+    }
+    @keyframes slide-in{
+      0% {
+        transform: translateX(300px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    @keyframes slide-out{
+      0% {
+        opacity: 1;
+        transform: translateX(0px);
+      }
+      100% {
+        transform: translateX(300px);
+      }
+		} 
+		
+		
+.about-container {
+	text-align: center;
+	margin-top: 100px;
+}
+
+.about-container h1 {
+	margin-bottom: 24px;
+	color: #ffd61a;
+}
+
+.about-container h2 {
+	margin-bottom: 64px;
+}
+
+.about-container p:nth-of-type(1) {
+	margin-bottom: 40px;
+}
+
+.about-container p:nth-of-type(5) {
+	margin-bottom: 80px;
+}
+
+/*動くスライド*/
+.infinity-slide{
+	/* 二つのスライドを横に並べる */
+	display: flex; 
+	width: 100%;
+	overflow: hidden;
+	margin-bottom: 64px;
+}
+
+#slide {
+	/* 無限ループアニメーションの設定 */
+	animation: infinity-loop 20s infinite linear 1s both;
+	/* スライドの要素を横に並べる */
+  display: flex;
+  height: 200px;
+}
+
+#slide img{
+	height: 100%;
+}
+
+/* 無限ループアニメーション */
+@keyframes infinity-loop {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.course-container {
+	margin-bottom: 64px;
+}
+
+.course-container h1 {
+	size: 24px;
+	color: #222222;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.course-container h2 {
+	size: 24px;
+	color: #222222;
+	margin-bottom: 40px;
+}
+
+.course-container > p {
+	margin-bottom: 64px;
+	text-align: center;
+}
+
+.course {
+	display: flex;
+	align-items: center;
+}
+
+.course div {
+	width: calc(50% - 48px);
+}
+
+.course div>h2 {
+	margin-bottom: 10px;
+  line-height: 2;
+}
+
+.course > img{
+	width: 50%;
+}
+
+.course-p1 {
+	margin-right: 20px;
+}
+.course-p2 {
+	margin-left: 20px;
+}
+
+.first-section div,
+.third-section div {
+	margin-left: 48px;
+}
+
+.second-section {
+	flex-direction: row-reverse;
+}
+
+.third-section {
+	margin-bottom: 64px;
+}
+
+.second-section div {
+	margin-right: 48px;
+}
+
+
+.news-container {
+	margin-bottom: 56px;
+}
+
+.news-container-list {
+	display: flex;
+	justify-content: space-between;
+	margin: 0 10px;
+}
+
+.news {
+	width: calc((100% - 10%) / 3);
+}
+
+
+.news img {
+	margin-bottom: 32px;
+	width: 100%;
+	height: 40%;
+	object-fit: cover;
+	}
+
+
+
+.news p:nth-of-type(1) {
+	margin-bottom: 24px;
+}
+
+.news-container h1 {
+	margin-bottom: 24px;
+	color: #ffd61a;
+	text-align: center;
+}
+
+.test>p {
+	color: red;
+}
+
+
+#ACCESS {
+	size: 24px;
+	color: #222222;
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+#map {
+	margin-bottom: 64px;
+	width: 100%;
+	height: 240px;
+	/* height: 340px; */
+}
+
+.access {
+	display: flex;
+	justify-content: center;
+	margin-left: 10px;
+	margin-bottom: 40px;
+}
+
+.access p {
+	margin-bottom: 24px;
+}
+
+.access-tag-name {
+	margin-left: 48px;
+}
+
+.contact-container h1 {
+	size: 24px;
+	color: #222222;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.contact-container p {
+	text-align: center;
+}
+
+
+.contact-container p:nth-of-type(3) {
+	margin-bottom: 32px;
+}
+
+.contact-container p:nth-of-type(4) {
+	margin-bottom: 80px;
+}
+
+.form-container {
+	display: flex;
+	justify-content: center;
+}
+
+.test {
+	width: 70%;
+}
+
+form dl dt{
+	float: left;
+	clear: both;
+	width: 140px;
+	align-items: center;
+	margin-bottom: 24px;
+}
+
+form dt {
+	line-height: 32px;
+	margin-right: 20px;
+	margin-left: 20px;
+}
+
+form dd {
+		margin-bottom: 24px;
+}
+
+input[type="text"], 
+input[type="email"], 
+textarea
+{
+width: 60%;
+}
+
+form dl:nth-of-type(3)  {
+	margin-bottom: 40px;
+}
+
+form dl:nth-of-type(5)  {
+	margin-bottom: 40px;
+}
+
+legend label{
+	display: block;
+}
+
+input[type="checkbox"] {
+	margin-right: 40px;
+}
+
+.checkbox {
+	display: flex;
+	clear: both;
+	margin-bottom: 32px;
+}
+
+.submit {
+	clear: both;
+	display: block;
+	margin: 0 auto;
+	width: 298px;
+	height: 54px;
+	background-color: #ffd61a;
+	border: none;
+	color: white;
+	margin-bottom: 100px;
+}
+
+footer {
+	clear: both;
+	text-align: center;
+	background-color: #707070;
+	padding-top: 32px;
+	/* font-size: 18px; */
+	color: white;
+}
+
+#page_top {
+  position: fixed;
+  right: 0px;
+	bottom: 50px;
+	z-index: 2;
+}
+#page_top a {
+    background-color: #999;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    padding: 20px 20px;
+}
+#page_top a:hover {
+    background-color: #666;
+    text-decoration: none;
+}
+
+/* topボタンがブラウザを縮小したときにbodyの端からはみ出さないようにする設定 */
+@media screen and (min-width: 960px){
+  #page_top {
+    right: calc(50% - 480px);
+  }
+}
+
+
+
+@media (max-width:960px) {
+	body,
+	header,
+	nav,
+	.about-container,
+	.course-container,
+	.news-container,
+	#ACCESS,
+	#map,
+	.contact-container,
+	.form-container,
+	footer {
+		width: 100vw;
+	}
+
+	nav li {
+		font-size: 18px;
+	}
+
+
+	.second-section {
+		flex-direction: row;
+	}
+
+	.second-section div,
+	.first-section div,
+	.third-section div
+	 {
+		margin-left: 48px;
+		margin-right: 20px;
+	}
+
+		.course > img{
+		width: 50%;
+	}
+
+		.course-p2 {
+		margin-left: 0px;
+	}
+}
+
+@media (max-width:812px) {
+	.course > img {
+		display: none;
+	}
+
+	.course {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+	}
+
+	.course div {
+		width: 80%;
+	}
+
+
+
+	.second-section div, .first-section div, .third-section div {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+	.course-container h2 {
+		margin-bottom: 20px;
+	}
+
+	.course div p {
+		margin-bottom: 30px;
+	}
+
+
+	.first-section {
+		width: 100%;
+	}
+
+		input[type="checkbox"] {
+		margin-right: 20px;
+	}
+}
+
+
+
+@media (max-width:688px) {
+	body {
+		width: 100vw;
+	}
+
+	.font-padding {
+		padding-left:10px;
+		padding-right:10px;
+	}
+
+	
+	nav {
+		height: 50px;
+	}
+
+	nav ul{
+		display: none;
+	}
+
+  #panel-btn {
+		margin-right: 10px;
+		display: block;
+	}	
+
+	nav > div {
+		align-items: center;
+		display: flex;
+	}
+
+	#contents {
+		width: 940px;
+		height: 400px;
+		margin: 0 auto; background: white; 
+}
+	.panel {
+		display: none;
+		width: 220px;
+		padding: 20px;
+		background-color: #333;
+		color: #fff;
+		box-shadow: inset 0 0 5px 5px #222;
+	}
+
+
+	.course {
+		display: flex;
+		justify-content: center;
+	}
+
+
+
+	.news-container-list {
+		display: grid;
+		/* grid-template-columns: 40% 40% 40%; */
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	}
+
+.news {
+	width: 90%;
+	margin: 0 auto;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+
+.news img {
+	margin-bottom: 10px;
+	margin-left: 	10%;
+	width: 80%;
+	height: 40%;
+	object-fit: cover;
+	}
+
+.news p {
+	margin-left: 	10%;
+	width: 80%;
+
+}
+
+
+.news p:nth-of-type(1) {
+	margin-bottom: 10px;
+}
+
+.news-container h1 {
+	margin-bottom: 10px;
+	color: #ffd61a;
+	text-align: center;
+}
+
+	.access-tag-name {
+	margin-left: 24px;
+}
+
+	.form-container {
+		text-align: center;
+	}
+
+	form dl {
+		text-align: initial;
+	}
+
+	form dl dt {
+		display: block;
+		float: initial;
+		align-items: initial;
+		margin: 0;
+	}
+
+	form dd {
+		clear: both;
+		margin-bottom: 10px;
+	}
+
+	input[type="text"], 
+	input[type="email"], 
+	textarea
+	{
+		width: 100%;
+	}
+
+		legend {
+		margin-bottom: 24px;
+		}
+
+	.checkbox {
+		display: initial;
+		clear: both;
+		margin-bottom: 32px;
+	}
+
+
+	.submit {
+		width: 60%;
+	}
+
+
+}
+
+
+
+
+
+
+
+/*どの部分のcssに対して
+命令をしているのかコメントを
+記載しよう！
+---------------------*/
+
+
+/*
+---------------------*/
+
+
+
+/*
+---------------------*/
+
+
+
+/*
+---------------------*/
+
+
+
+/*
+---------------------*/
