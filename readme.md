@@ -1,5 +1,5 @@
 # チーズアカデミーのwebサイト
-- URL https://yuki1569.github.io/cheese_academy/
+- URL https://yuki1569.github.io/cheeseHP/
 
 ## プロダクトの紹介
 - チーズアカデミーのwebサイト。
